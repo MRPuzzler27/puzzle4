@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>🧩 Puzzle #2 Terminal</title>
+  <title>Puzzle #4 Terminal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -11,34 +11,30 @@
   <style>
     body {
       font-family: 'VT323', monospace;
-      background: #0f111a;
-      color: #39ff14;
+      background: #ffffff;
+      color: #000000;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 1rem;
-      background-image:
-        linear-gradient(rgba(57,255,20,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(57,255,20,0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
     }
     .container {
-      background: #11141e;
-      border: 2px solid #39ff14;
+      background: #ffffff;
+      border: 2px solid #000000;
       border-radius: 8px;
       padding: 1.5rem;
       width: 100%;
       max-width: 540px;
       box-sizing: border-box;
-      box-shadow: 0 0 20px #39ff14aa;
+      box-shadow: 0 0 20px #00000033;
     }
     h1 {
       font-size: 20rem;
       text-align: center;
       margin-bottom: 1.2rem;
       user-select: none;
-      text-shadow: 0 0 10px #39ff14aa;
+      text-shadow: 0 0 10px #00000033;
     }
     label {
       display: block;
@@ -49,20 +45,20 @@
     input[type=text] {
       width: 100%;
       padding: 0.6rem 0.75rem;
-      background: #0a0c13;
-      border: 1.8px solid #39ff14;
+      background: #ffffff;
+      border: 1.8px solid #000000;
       border-radius: 5px;
-      color: #39ff14;
+      color: #000000;
       font-size: 1.3rem;
       margin-bottom: 1rem;
-      text-shadow: 0 0 5px #39ff14bb;
+      text-shadow: 0 0 5px #00000022;
       box-sizing: border-box;
     }
     input[type=text]:focus {
       outline: none;
-      border-color: #68ff6c;
-      box-shadow: 0 0 15px #68ff6caa;
-      background: #12161f;
+      border-color: #000000;
+      box-shadow: 0 0 15px #00000055;
+      background: #f4f4f4;
     }
     .input-group {
       display: flex;
@@ -72,9 +68,9 @@
       justify-content: center;
     }
     button {
-      background: #0a0c13;
-      border: 2px solid #39ff14;
-      color: #39ff14;
+      background: #ffffff;
+      border: 2px solid #000000;
+      color: #000000;
       font-family: 'VT323', monospace;
       font-size: 1.4rem;
       padding: 1.5rem 5rem;
@@ -82,15 +78,15 @@
       cursor: pointer;
       user-select: none;
       transition: all 0.2s ease;
-      box-shadow: 0 0 5px #39ff14cc;
+      box-shadow: 0 0 5px #00000055;
       text-align: center;
       width: 100%;
       max-width: 260px;
     }
     button:hover {
-      background: #39ff14;
-      color: #0a0c13;
-      box-shadow: 0 0 20px #39ff14cc;
+      background: #000000;
+      color: #ffffff;
+      box-shadow: 0 0 20px #00000055;
     }
     #status {
       margin-top: 1rem;
@@ -99,6 +95,7 @@
       min-height: 1.5rem;
       user-select: none;
       letter-spacing: 1px;
+      color: #000000;
     }
     #nameSection {
       margin-top: 2rem;
@@ -114,7 +111,7 @@
     #leaderboardTitle span {
       margin: 0 1rem;
       font-size: 0.4em;
-      filter: drop-shadow(0 0 3px #39ff14);
+      filter: drop-shadow(0 0 3px #000000);
     }
     #leaderboard {
       list-style: none;
@@ -127,7 +124,7 @@
       font-size: 1.3rem;
       margin: 0.15rem 0;
       text-align: left;
-      text-shadow: 0 0 5px #39ff14aa;
+      text-shadow: 0 0 5px #00000022;
       letter-spacing: 0.03em;
       padding-left: 2.5rem;
     }
@@ -153,33 +150,16 @@
   </style>
 </head>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/3.0.2/spark-md5.min.js"></script>
-
-<div style="display: flex; flex-direction: column; align-items: center; gap: 2rem; padding-top: 2rem;">
-  <div style="max-width: 500px; width: 100%; background: #0f111a; border: 1px solid #39ff14; padding: 1rem; border-radius: 6px; box-shadow: 0 0 15px #39ff14aa; font-family: 'VT323', monospace; text-align: center;">
-    <label for="md5Input" style="display:block; margin-bottom:0.25rem;">
-      <i>"I spread my form, unique and rare.<br>No stem, no leaf, yet I unfold,<br>A fleeting marvel, crimson-bold.<br>Rootless, I thrive on another's might,<br>What am I, blooming in jungle night?"</i>
-    </label>
-    <input type="text" id="md5Input" placeholder="Enter Key word 1" style="width:100%; margin-bottom:0.4rem; padding:0.5rem; background:#0a0c13; border:1px solid #39ff14; color:#39ff14; font-family:'VT323', monospace;">
-    
-    <label for="saltInput" style="display:block; margin-bottom:0.25rem;">Listen to the audio to get the 2nd keyword
-      <center><audio controls><source src="https://mrpuzzler27.github.io/puzzler/solvethisprivate.mp3" type="audio/mpeg"></audio></center>
-    </label>
-    <input type="text" id="saltInput" placeholder="Enter Key word 2" style="width:100%; margin-bottom:0.4rem; padding:0.5rem; background:#0a0c13; border:1px solid #39ff14; color:#39ff14; font-family:'VT323', monospace;">
-
-    <button onclick="const text = document.getElementById('md5Input').value; const salt = document.getElementById('saltInput').value; document.getElementById('md5Output').value = SparkMD5.hash(text + salt);" style="margin-top:0.5rem; padding:0.5rem 1rem; background:#0a0c13; color:#39ff14; border:1px solid #39ff14; cursor:pointer; font-family:'VT323', monospace;">Generate Answer</button>
-
-    <input type="text" id="md5Output" readonly placeholder="Generated answer code" style="width:100%; margin-top:0.5rem; padding:0.5rem; background:#0a0c13; border:1px solid #39ff14; color:#39ff14; font-family:'VT323', monospace;">
-  </div>
-
-
-
 <body>
+
+  <img src="puzzle4.png" style="border-radius:10px; display:block; margin:auto; max-width:100%; height:auto;">
+
+
   <div class="container">
-    <h1>ANSWER PUZZLE #2</h1>
-    <label for="answerInput">Enter your puzzle answer:</label>
+    <h1>ANSWER PUZZLE #4</h1>
+    <label for="answerInput">Input WIF here for address <font color="red">12Wo62o2oGg1Tj59QsL8XwKzWFLG4AGnaV</font>:</label>
     <div class="input-group">
-      <input id="answerInput" type="text" autocomplete="off" placeholder="Paste your answer code here" />
+      <input id="answerInput" type="text" autocomplete="off" placeholder="51 alphanumeric keys" />
       <button id="submitAnswerBtn">Submit</button>
     </div>
     <div id="status"></div>
@@ -193,10 +173,10 @@
       <div class="input-group">
         <input id="gcashInput" type="text" autocomplete="off" placeholder="Your GCash number here" />
       </div>
-      <div id="nameStatus" style="margin-top:0.8rem; font-size:1rem; color:#68ff6c; text-align:center;"></div>
+      <div id="nameStatus" style="margin-top:0.8rem; font-size:1rem; color:#000000; text-align:center;"></div>
     </div>
     <div id="leaderboardTitle">
-      <span>🏆</span> LEADERBOARD <span>🏆</span>
+      <span></span> WINNER <span></span>
     </div>
     <ul id="leaderboard"></ul>
   </div>
@@ -219,7 +199,7 @@
     const answerInput = document.getElementById('answerInput');
     const submitAnswerBtn = document.getElementById('submitAnswerBtn');
     const status = document.getElementById('status');
-    const nameSection = document.getElementById('nameSection');
+    const nameSection = document.getElementById('nameSection');//n38 ⇠⇠⇠
     const nameInput = document.getElementById('nameInput');
     const gcashInput = document.getElementById('gcashInput');
     const submitNameBtn = document.getElementById('submitNameBtn');
@@ -233,14 +213,14 @@
         status.textContent = "❌ Please enter an answer.";
         return;
       }
-      status.style.color = '#39ff14';
+      status.style.color = '#000000';
       status.textContent = "⏳ Checking answer...";
       const testRef = db.ref("solvers").push();
       testRef.set({
         answer: val,
         gcash: "__test__"
       }).then(() => {
-        status.style.color = '#68ff6c';
+        status.style.color = '#000000';
         status.textContent = "✔️ Correct answer! Please enter your name below.";
         answerInput.disabled = true;
         submitAnswerBtn.disabled = true;
@@ -281,7 +261,7 @@
           timestamp: Date.now()
         });
       }).then(() => {
-        nameStatus.style.color = '#68ff6c';
+        nameStatus.style.color = '#000000';
         nameStatus.textContent = `✅ ${nameVal}, you have been added to the leaderboard.`;
         nameInput.value = "";
         gcashInput.value = "";
@@ -321,8 +301,8 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #11141e;
-    color: #39ff14cc;
+    background: #ffffff;
+    color: #000000;
     font-family: 'VT323', monospace;
     font-size: 0.9rem;
     text-align: center;
@@ -331,7 +311,7 @@
     z-index: 1000;
   ">
     Follow me for more puzzles:
-    <a href="https://www.facebook.com/limuel.sanchez.klb/" target="_blank" rel="noopener noreferrer" style="color:#68ff6c; text-decoration:none;">
+    <a href="https://www.facebook.com/limuel.sanchez.klb/" target="_blank" rel="noopener noreferrer" style="color:#000000; text-decoration:none;">
       facebook
     </a>
   </footer>
